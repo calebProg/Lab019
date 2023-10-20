@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+public class EncApp{
+	
+	public static void main(String [] args){
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		// Collect Data from the User
+		System.out.print("User Input : ");
+		String userInput = scanner.nextLine();
+		
+		int	userCode;
+		int nextString;
+		
+		
+		// Display whie 0 is not pressed
+		char[] finalChar = new char[userInput.length()];
+		
+		do{
+			
+		
+			// Let the user choose Option Encrypt or Decrypt data
+			System.out.print("\nEncrypt(1) || Decrypt(2)  (0-exit) : ");
+			userCode = scanner.nextInt();
+			// if the user chose 1 or 2 then do this
+			
+			switch(userCode){
+				
+				case 1:
+				
+					// ENCRYPTION ALGORITHM
+					
+					char[] charsFromString1 = new char[userInput.length()];
+					
+					int[] acciiVersionOfChars1 = new int[userInput.length()];
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						charsFromString1[i] = userInput.charAt(i);
+					}
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						acciiVersionOfChars1[i] = (int)charsFromString1[i] + 3; 
+					}
+					
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						finalChar[i] = (char)acciiVersionOfChars1[i];
+						
+						System.out.print((char)acciiVersionOfChars1[i]);
+					}
+					
+				break;
+				
+				case 2:
+				
+					// DECRYPTION ALGORITHM
+					
+					char[] charsFromString2 = new char[userInput.length()];
+					
+					int[] acciiVersionOfChars2 = new int[userInput.length()];
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						charsFromString2[i] = finalChar[i];
+					}
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						acciiVersionOfChars2[i] = (int)charsFromString2[i] - 3; 
+					}
+					
+					
+					for(int i = 0; i < userInput.length(); i++){
+						
+						System.out.print((char)acciiVersionOfChars2[i]);
+					}
+					
+				break;
+				
+				default:
+					
+					System.out.println("Invalid input");
+			}
+			
+			System.out.print("\n\nContinue (yes(1)--no(2))");
+			nextString = scanner.nextInt();
+			
+		}while(nextString == 1);
+		
+	}
+}
